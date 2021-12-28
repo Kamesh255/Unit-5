@@ -1,5 +1,4 @@
-import React from "react";
-import ListRow from "./ListRow";
+import React from "react"; 
 
 class AnotherList extends React.Component{
     render(){

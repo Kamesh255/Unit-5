@@ -1,0 +1,12 @@
+ .input{
+     padding: 5px;
+   
+ }
+ .list{
+    background-color: rgb(145, 228, 221);
+ }
+ .list-item{
+     width: fit-content;
+     margin: auto;
+     padding: 5px;
+ }
