@@ -7,7 +7,6 @@ import React from "react";
             <li>iPhone</li> 
             <li>Windows Phone</li> 
          </ul>
-     )
-
+     ) 
  }
  export default List 
