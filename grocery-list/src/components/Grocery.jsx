@@ -7,7 +7,6 @@ import "./Grocery.css"
 
 export const Todo = () => {
     const [list, setList] = useState([]);
-
     const handleClick = (data) => {
 
         const payLoad = {
@@ -35,3 +34,7 @@ export const Todo = () => {
         </>
     );
 };
+
+
+
+ 
