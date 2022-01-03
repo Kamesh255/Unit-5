@@ -1,0 +1,10 @@
+.table {
+    border: 1px solid black; 
+    color: white;
+    width: 60%;
+    margin: auto;
+    background-color: cadetblue;
+}
+.col2{
+    width: 80%;
+}
