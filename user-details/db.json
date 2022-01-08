@@ -1,0 +1,29 @@
+{
+  "userdata": [
+    {
+      "name": "Kamesh Hedau",
+      "id": "buYDH6hdrGS2L00aRRtp5",
+      "age": "23",
+      "adress": "Seoni",
+      "department": "CS",
+      "salary": "200000"
+    },
+    {
+      "name": "kamesh",
+      "id": "IYSOpamddc6oByNGKQOrt",
+      "age": "23",
+      "adress": "Seoni",
+      "department": "CS",
+      "salary": "2000000"
+    },
+    {
+      "name": "rajesh",
+      "id": "Brozj9Awf6k_PYhT1D2UB",
+      "age": "24",
+      "adress": "Seoni",
+      "department": "CS",
+      "salary": "200000",
+      "marital": "on"
+    }
+  ]
+}
