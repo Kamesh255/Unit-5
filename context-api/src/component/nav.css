@@ -1,0 +1,11 @@
+.nav{
+    display: flex;
+    color: black;
+    background-color: burlywood;
+    height: 70px;
+    align-items: center;
+}
+.nav > button {
+   margin-left: 510px;
+   
+}
