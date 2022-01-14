@@ -1,0 +1,15 @@
+#navbar{
+    width: 100%;
+    height: 80px;
+    display: grid; 
+    grid-template-columns: auto auto;
+    border: 1px solid black;
+    align-items: center;
+    background-color: burlywood;
+}
+ li{
+     list-style: none;
+ }
+ .n-btn ul{
+     display: flex;
+ }
