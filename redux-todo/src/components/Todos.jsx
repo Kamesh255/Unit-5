@@ -12,9 +12,9 @@ import {
 } from "../redux/action";
 
 export const Todos = () => {
+  const [upID, setUpdateId] = useState("");
   const [text, setText] = useState("");
   const [show, setShow] = useState(false);
-  const [upID, setUpdateId] = useState("");
 
   const { loading, todos, error } = useSelector((state) => ({
     loading: state.loading,
@@ -89,15 +89,17 @@ export const Todos = () => {
     <div>Something went wrong!</div>
   ) : (
     <div>
-      <h1 style={{backgroundColor:"burlywood"}}>TODO APPLICATION</h1>
+      <h1 style={{ backgroundColor: "burlywood" }}>TODO APPLICATION</h1>
       <h3>Enter new tasks to do, update or delete</h3>
-      <input style={{width:"300px",height:"35px"}}
+      <input
+        style={{ width: "300px", height: "35px" }}
         value={text}
         type="text"
         placeholder="ENTER TODO"
         onChange={(e) => setText(e.target.value)}
       />
-      <button style={{width:"100px",height:"40px"}}
+      <button
+        style={{ width: "100px", height: "40px" }}
         onClick={() => {
           dispatch(addTodoLoading());
           fetch("http://localhost:4000/Todos", {
@@ -117,15 +119,45 @@ export const Todos = () => {
       </button>
       {todos.map((e) => (
         <>
-          <div className="titleWrapper" style={{border:"1px solid",width:"400px", margin:"auto"}}>
+          <div
+            className="titleWrapper"
+            style={{ border: "1px solid", width: "400px", margin: "auto" }}
+          >
             <div key={e.id} id={e.id}>
-             <h4>Title : {e.title}</h4>
+              <h4>Title : {e.title}</h4>
             </div>
             <div className="lists">
-              <button style={{height:"30px", borderRadius:"15px",margin:"10px",fontSize:"12px"}} onClick={() => setUpdates(e.id)}>Update Todo</button>
-              <button style={{height:"30px", borderRadius:"15px",margin:"10px",fontSize:"12px"}} onClick={() => deleteTodo(e.id)}>Delete Todo</button>
+              <button
+                style={{
+                  height: "30px",
+                  borderRadius: "15px",
+                  margin: "10px",
+                  fontSize: "12px",
+                }}
+                onClick={() => setUpdates(e.id)}
+              >
+                Update Todo
+              </button>
+              <button
+                style={{
+                  height: "30px",
+                  borderRadius: "15px",
+                  margin: "10px",
+                  fontSize: "12px",
+                }}
+                onClick={() => deleteTodo(e.id)}
+              >
+                Delete Todo
+              </button>
               {e.status ? (
-                <button style={{height:"30px", borderRadius:"15px",margin:"10px",fontSize:"12px",backgroundColor:"greenyellow"}}
+                <button
+                  style={{
+                    height: "30px",
+                    borderRadius: "15px",
+                    margin: "10px",
+                    fontSize: "12px",
+                    backgroundColor: "greenyellow",
+                  }}
                   key={nanoid()}
                   onClick={() => updateStatus(e.id, e.status)}
                   className="completed_Status"
@@ -133,7 +165,13 @@ export const Todos = () => {
                   COMPLETED
                 </button>
               ) : (
-                <button style={{height:"30px", borderRadius:"15px",margin:"10px",fontSize:"12px"}}
+                <button
+                  style={{
+                    height: "30px",
+                    borderRadius: "15px",
+                    margin: "10px",
+                    fontSize: "12px",
+                  }}
                   key={nanoid()}
                   onClick={() => updateStatus(e.id, e.status)}
                   className="uncom_status"
