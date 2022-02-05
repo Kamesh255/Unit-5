@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imgur</title>
+    <link rel="stylesheet" href="imgur.css">
+</head>
+
+<body>
+    <div id="box">
+        <div id="navbar">
+            <div class="logo" style="margin-left: 100px;">
+                <img style="width: 150px; height: 70px; color: white;" src="logo.png" alt="">
+            </div>
+            <div class="serch" style="margin-top: 15px;">
+                <input style="width: 300px; height: 35px;border: transparent; opacity: 50%; "
+                    oninput="debounce(main,1000)" type="text" id="query" placeholder="Image,#tags,@user oh my!">
+                <button class="btn" style="height: 35px; width: 100px;border-radius: 7px;"
+                    onclick="searchVideos()">Serach</button>
+                <div class="imgur"></div>
+            </div>
+            <div class="opton" style="margin-top: 15px;margin-left: 100px;">
+                <button class="btn" style=" margin-left: 100px; height: 35px; width: 100px; border-radius: 7px;">Sign
+                    In</button>
+                <button class="btn" style="height: 35px; width: 100px;border-radius: 7px;">Sign up</button>
+            </div>
+        </div>
+        <div id="container">
+            <div id="cnt1"></div>
+            <div id="cnt2"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script> 
+
+    searchVideos();
+
+    let videos = document.getElementById("cnt2");
+
+    async function searchVideos() {
+
+        let query = document.getElementById("query").value
+
+        if (query == "") {
+            query = "Trending"
+        }
+
+        let res = await fetch(
+            `https://youtube.googleapis.com/youtube/v3/search?q=${query}&type=video&key=AIzaSyAry-NstHgPuuuhevjHRDIaMF59JW7e8Ts&maxResults=20`
+        );
+        let data = await res.json();
+        console.log("data:", data);
+
+        appendVideos(data.items);
+    }
+
+    function appendVideos(video_deta) {
+        videos.innerHTML = null
+
+        video_deta.forEach(({ id: { videoId } }) => {
+
+            let div = document.createElement("div");
+
+            div.innerHTML = `<iframe width="90%" height="215" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            cnt2.append(div);
+        })
+    }
+ 
+    const data = [
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.rWR7YW0Ky53Pn_Gb1TubhAHaHa&pid=Api",
+        name: "Banana for scale",
+        posts: "posts 6,978"
+    },
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.OAZ8uHDPOjK2N4yV-mzCwgHaFm&pid=Api",
+        name: "Oddly Satisfying ",
+        posts: "posts 6,543"
+    },
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.fA9kpIFhh6X-kFWsWgWnigHaEL&pid=Api",
+        name: "Block history month",
+        posts: "posts 6,200"
+    },
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.HTMhlLBiOsDf8KtbJoRr7QHaEK&pid=Api",
+        name: "Funny",
+        posts: "posts 5,978"
+    },
+    {
+        img : "https://tse2.mm.bing.net/th?id=OIP.xQr-5tdZcg7AWEG7k4immgHaEK&pid=Api",
+        name: "Aww",
+        posts: "posts 5,208"
+    },
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.uMa9RsiqpUQ88wxpEXNSZwHaE8&pid=Api",
+        name: "Coffee",
+        posts: "posts 4,978"
+    },
+    {
+        img : "https://tse2.mm.bing.net/th?id=OIP.QYCBq93W9R7npksDthY6iwHaFj&pid=Api",
+        name: "Dog",
+        posts: "posts 4,578"
+    },
+    {
+        img : "https://tse3.mm.bing.net/th?id=OIP.k2P5v03yB_c-UOUQ7CCMsgHaEo&pid=Api",
+        name: "Awesome",
+        posts: "posts 4,378"
+    },
+    {
+        img : "https://tse4.mm.bing.net/th?id=OIP.5oPF6-43Ig5M8tALV-P6RwHaE8&pid=Api",
+        name: "Memes",
+        posts: "posts 3,978"
+    },
+    {
+        img : "https://tse3.mm.bing.net/th?id=OIP.u2UZ2UB9p_aohNzIDXb3NwHaHa&pid=Api",
+        name: "Gaming",
+        posts: "posts 3,878"
+    }, 
+]
+ 
+let container = document.getElementById("cnt1") 
+        
+        function show (datas) {   
+        datas.forEach(function(el){ 
+            let div1 = document.createElement("div"); 
+            div1.setAttribute("class","div1")
+            
+            let div11= document.createElement("div");
+            div11.setAttribute("class","div11")
+
+            let div12= document.createElement("div");
+            div12.setAttribute("class","div12")
+
+            let img1  = document.createElement("img");
+            img1.src = el.img  
+            img1.setAttribute("class","img1") 
+
+            let name = document.createElement("p")
+            name.textContent = el.name
+
+            let post = document.createElement("p")
+            post.textContent = el.posts
+
+            div11.append(img1); 
+            div12.append(name, post)
+            div1.append(div11,div12) 
+            container.append(div1) 
+        });
+        } 
+        show(data);  
+
+</script>
