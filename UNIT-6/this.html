@@ -1,0 +1,43 @@
+<!-- In JavaScript, the this keyword refers to an object.
+Which object depends on how this is being invoked (used or called). 
+The this keyword refers to different objects depending on how it is used:
+In an object method, this refers to the object. Alone, this refers to the global object. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> <span style="color: red;">"this"</span> keyword in JavaScript</h1> 
+</body>
+</html>
+<script>
+//    console.log(this)
+
+// function sum (){
+//     let add = 2+2
+//     console.log(add)
+//     console.log(this)
+// }
+// sum()
+
+let details = {
+   name:"kamesh hedau",
+   age:23,
+   maths:70,
+   english:65,
+   marks:function sum(){
+       let add = this.maths+this.english
+       console.log(add)
+       console.log(this)
+   }
+}
+details.marks()
+
+</script>
